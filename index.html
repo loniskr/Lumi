@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김민혁 포트폴리오 | Lumi 프로젝트</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter 폰트 (한글은 기본 폰트 사용) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+        }
+        /* 다크모드 기본 설정 */
+        html {
+            background-color: #111827; /* bg-gray-900 */
+        }
+        /* 섹션 제목 스타일 */
+        h2 {
+            font-size: 1.875rem; /* 3xl */
+            font-weight: 700;
+            color: #F3F4F6; /* text-gray-100 */
+            border-bottom: 1px solid #374151; /* border-gray-700 */
+            padding-bottom: 0.5rem; /* pb-2 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        h3 {
+            font-size: 1.5rem; /* 2xl */
+            font-weight: 600;
+            color: #D1D5DB; /* text-gray-300 */
+            margin-top: 2rem; /* mt-8 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        h4 {
+            font-size: 1.125rem; /* lg */
+            font-weight: 600;
+            color: #93C5FD; /* text-blue-300 */
+            margin-top: 1.5rem; /* mt-6 */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+        /* 본문 텍스트 */
+        p, li {
+            color: #D1D5DB; /* text-gray-300 */
+            line-height: 1.75; /* leading-relaxed */
+        }
+        /* 링크 스타일 */
+        a {
+            color: #60A5FA; /* text-blue-400 */
+            transition: color 0.2s ease-in-out;
+        }
+        a:hover {
+            color: #93C5FD; /* text-blue-300 */
+            text-decoration: underline;
+        }
+        /* 코드 및 키워드 하이라이트 */
+        code, .highlight {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1F2937; /* bg-gray-800 */
+            color: #FDE68A; /* text-yellow-200 */
+            padding: 0.125rem 0.375rem; /* px-1.5 py-0.5 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.9em;
+        }
+        /* 스킬 뱃지 */
+        .skill-badge {
+            display: inline-block;
+            background-color: #374151; /* bg-gray-700 */
+            color: #E5E7EB; /* text-gray-200 */
+            border-radius: 9999px; /* rounded-full */
+            padding: 0.25rem 0.75rem; /* px-3 py-1 */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500;
+            margin: 0.25rem; /* m-1 */
+        }
+        /* 이미지 플레이스홀더 스타일 */
+        .img-placeholder {
+            width: 100%;
+            border-radius: 0.5rem; /* rounded-lg */
+            border: 2px dashed #374151; /* border-dashed border-gray-700 */
+            background-color: #1F2937; /* bg-gray-800 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6B7280; /* text-gray-500 */
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 antialiased">
+
+    <!-- 메인 컨테이너 -->
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
+        <!-- 1. 기본 정보 (About Me & Contact) -->
+        <section class="mb-16">
+            <div class="flex flex-col md:flex-row items-start space-y-6 md:space-y-0 md:space-x-8">
+                <!-- 프로필 이미지 플레이스홀더 -->
+                <div class="flex-shrink-0">
+                    <img class="h-32 w-32 rounded-full object-cover border-4 border-gray-700" 
+                         src="https://placehold.co/128x128/374151/E5E7EB?text=MH" 
+                         alt="김민혁 프로필 이미지"
+                         onerror="this.src='https://placehold.co/128x128/374151/E5E7EB?text=MH'; this.onerror=null;">
+                </div>
+                
+                <div class="flex-1">
+                    <h1 class="text-4xl font-bold text-white mb-2">김민혁</h1>
+                    <p class="text-xl text-gray-300 mb-4">
+                        일상 속 놓치는 부분을 자동화를 통해 해결하고자 하는 백엔드 개발자입니다.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        React를 이용한 프론트 기술을 병행하여, 사용자가 일상 속에서 잊고 놓치는 정보를 백엔드 기술로 포착하고 자동화하는 것에 큰 흥미를 가지고 있습니다.
+                        주로 <span class="highlight">NestJS</span>와 <span class="highlight">Spring Boot</span>를 사용하지만, 본 프로젝트(Lumi)에서는 <span class="highlight">Python (FastAPI)</span>과 <span class="highlight">TypeScript (VSCode)</span>를 핵심 스택으로 채택하여 AI 파이프라인과 네이티브 데스크톱 통합을 구현했습니다.
+                    </p>
+                    
+                    <!-- 연락처 -->
+                    <div class="flex flex-wrap gap-x-6 gap-y-2">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                            <a href="mailto:kimlonis97@gmail.com" class="text-blue-400 hover:text-blue-300">kimlonis97@gmail.com</a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.85-2.339 4.695-4.566 4.942.359.308.678.92.678 1.853 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0020 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                            <a href="https://github.com/loniskr" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300">github.com/loniskr</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 전체 기술 스택 (Skills) -->
+        <section class="mb-16">
+            <h2>Skills</h2>
+            <div class="space-y-4">
+                <div>
+                    <h4 class="text-gray-400 font-semibold">프론트엔드</h4>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">TypeScript</span>
+                        <span class="skill-badge">React</span>
+                        <span class="skill-badge">VSCode Webview API</span>
+                        <span class="skill-badge">VSCode Webview UI Toolkit</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-gray-400 font-semibold">백엔드</h4>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">FastAPI</span>
+                        <span class="skill-badge">Node.js (VSCode Ext Host)</span>
+                        <span class="skill-badge">NestJS</span>
+                        <span class="skill-badge">Spring Boot</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-gray-400 font-semibold">AI & Data</h4>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Ollama</span>
+                        <span class="skill-badge">RAG</span>
+                        <span class="skill-badge">PyMuPDF4LLM</span>
+                        <span class="skill-badge">python-docx</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-gray-400 font-semibold">DevOps & Tools</h4>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">Docker</span>
+                        <span class="skill-badge">VSCode Extension API</span>
+                        <span class="skill-badge">Everything (es.exe CLI)</span>
+                        <span class="skill-badge">PyInstaller</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 프로젝트 상세: Lumi -->
+        <section>
+            <h2>Project: Lumi (로컬 PC RAG 비서)</h2>
+            
+            <!-- 프로젝트 메인 이미지 플레이스홀더 -->
+            <img class="w-full h-auto rounded-lg mb-8 shadow-lg"
+                 src="https://placehold.co/800x400/1F2937/6B7280?text=Lumi+Project+Main+Image"
+                 alt="Lumi 프로젝트 메인 이미지"
+                 onerror="this.src='https://placehold.co/800x400/1F2937/6B7280?text=Lumi+Project+Main+Image'; this.onerror=null;">
+
+            <!-- 문제 정의 및 목표 -->
+            <div class="bg-gray-800 p-6 rounded-lg mb-8">
+                <h3 class="!mt-0">문제 정의</h3>
+                <p class="mb-4">
+                    개발자의 지식 자산(코드 스니펫, 기술 문서, PDF 매뉴얼, 개인 노트, 로그 파일)은 로컬 PC 전체에 분산되어 있습니다. 이로 인해 "저번에 본 그 PDF가 어디있지?" 또는 "이 에러 로그 패턴을 이전에 다른 프로젝트에서 본 것 같은데..."와 같이 일상에서 중요한 정보를 '잊고 놓치는' 문제가 빈번하게 발생합니다.
+                </p>
+                <p>
+                    기존의 파일 검색(예: Windows 검색)은 키워드 기반이라 파일의 '맥락'을 이해하지 못하며, 클라우드 기반 AI 서비스(예: ChatGPT)에 로컬 파일을 업로드하는 것은 민감한 정보 유출의 위험이 있어 현실적으로 불가능합니다.
+                </p>
+
+                <h3 class="text-white">목표</h3>
+                <p>
+                    내 PC의 모든 파일과 "대화"할 수 있는, 100% 로컬에서 실행되어 프라이버시를 보장하는 지능형 검색 비서 'Lumi'를 VSCode 내에 구축하여 이러한 '놓치는 부분'을 자동화하고 해결하는 것이 목표였습니다.
+                </p>
+            </div>
+
+            <!-- 아키텍처/설계 -->
+            <h3>아키텍처: 투-프로세스(Two-Process) 하이브리드</h3>
+            <p class="mb-4">
+                VSCode 확장 환경(<code class="highlight">TypeScript/Node.js</code>)과 AI/데이터 처리 생태계(<code class="highlight">Python</code>)의 이질성을 해결하기 위해 "투-프로세스(Two-Process) 하이브리드" 아키텍처를 채택했습니다.
+            </p>
+            <ul class="list-disc list-outside space-y-3 pl-5 mb-6">
+                <li>
+                    <strong class="text-white">프론트엔드 (VSCode Extension):</strong>
+                    TypeScript와 React 기반의 웹뷰(Webview) UI를 담당합니다. 사용자의 모든 상호작용을 처리하고 로컬 백엔드 API를 호출합니다.
+                </li>
+                <li>
+                    <strong class="text-white">백엔드 (AI/RAG Engine):</strong>
+                    Python과 <code class="highlight">FastAPI</code>를 기반으로 하는 로컬 REST API 서버입니다. Everything 연동, 파일 콘텐츠 파싱, <code class="highlight">Ollama</code> LLM 호출 등 모든 무거운 연산과 RAG 파이프라인을 담당합니다.
+                </li>
+                <li>
+                    <strong class="text-white">프로세스 브릿지 (Bridge):</strong>
+                    핵심 설계입니다. VSCode 확장이 활성화될 때, <code class="highlight">PyInstaller</code>로 패키징된 Python 백엔드(<code class="highlight">Lumi_Backend.exe</code>)를 Node.js의 <code class="highlight">child_process.spawn</code>을 사용해 백그라운드에서 실행시킵니다. 프론트엔드는 <code class="highlight">fetch</code>를 통해 <code class="highlight">http://localhost:8000</code>으로 이 로컬 서버와 통신합니다. 이 방식은 사용자에게 별도의 서버 실행을 요구하지 않는 심리스(seamless)한 경험을 제공합니다.
+                </li>
+            </ul>
+            
+            <!-- 아키텍처 다이어그램 플레이스홀더 -->
+            <img class="w-full h-auto rounded-lg my-8 shadow-lg"
+                 src="https://placehold.co/800x400/1F2937/6B7280?text=Lumi+Architecture+Diagram"
+                 alt="Lumi 아키텍처 다이어그램"
+                 onerror="this.src='https://placehold.co/800x400/1F2937/6B7280?text=Lumi+Architecture+Diagram'; this.onerror=null;">
+
+
+            <!-- 핵심 기능 1 -->
+            <h3>핵심 기능 1: 초고속 로컬 파일 인덱싱 (Everything es.exe 연동)</h3>
+            <p class="mb-4">
+                RAG 파이프라인의 'Retrieve' 단계에서 1초 미만의 응답 속도를 달성하기 위해 Voidtools의 Everything을 연동했습니다. Everything은 NTFS 변경 저널을 실시간으로 모니터링하여 PC 전체의 파일 목록을 거의 0에 가까운 지연 시간으로 인덱싱합니다.
+            </p>
+            <p class="mb-4">
+                복잡한 C SDK나 IPC 연동 대신, 신속한 개발("바이브 코딩")과 안정성을 위해 강력한 CLI 도구인 <code class="highlight">es.exe</code>를 채택했습니다. Python FastAPI 백엔드는 <code class="highlight">subprocess.run</code>을 사용해 아래와 같은 명령을 실행하고, 반환된 JSON 출력을 파싱하여 RAG에 필요한 파일 경로, 크기, 수정 날짜를 즉각적으로 확보합니다.
+            </p>
+            <pre class="bg-gray-800 p-4 rounded-md text-sm text-yellow-200 overflow-x-auto mb-6"><code>es.exe -json -n 10 -a-d -size -dm "검색어"</code></pre>
+            
+            <!-- 핵심 기능 1 스크린샷 플레이스홀더 -->
+            <img class="w-full h-auto rounded-lg my-8 shadow-lg"
+                 src="https://placehold.co/800x400/1F2937/6B7280?text=Feature+1:+Fast+Indexing"
+                 alt="Lumi 초고속 검색 결과"
+                 onerror="this.src='https://placehold.co/800x400/1F2937/6B7280?text=Feature+1:+Fast+Indexing'; this.onerror=null;">
+
+            <!-- 핵심 기능 2 -->
+            <h3>핵심 기능 2: 100% 로컬 RAG 파이프라인</h3>
+            <p class="mb-4">
+                사용자 PC의 프라이버시를 완벽하게 보장하기 위해 모든 AI 연산이 로컬에서만 실행되는 RAG 파이프라인을 구축했습니다.
+            </p>
+            <ol class="list-decimal list-outside space-y-4 pl-5 mb-6">
+                <li>
+                    <strong class="text-white">Retrieve:</strong>
+                    (<span class="italic">핵심 기능 1에서 설명</span>) <code class="highlight">es.exe</code>가 사용자 쿼리와 연관된 파일 경로 목록을 반환합니다.
+                </li>
+                <li>
+                    <strong class="text-white">Parse:</strong>
+                    백엔드가 이 경로 목록을 받아, 파일 확장자에 따라 각기 다른 순수 Python 라이브러리로 실제 콘텐츠를 추출합니다.
+                    <ul class="list-disc list-outside space-y-2 pl-6 mt-2">
+                        <li><code class_name="highlight">.pdf</code>: LLM용 마크다운 추출에 최적화된 <code class="highlight">pymupdf4llm</code> 사용.</li>
+                        <li><code class_name="highlight">.docx</code>: <code class="highlight">python-docx</code>를 사용하여 텍스트와 테이블 내용을 추출.</li>
+                        <li><code class_name="highlight">.txt, .md, .py, .js 등</code>: Python 내장 <code class="highlight">open()</code> 함수로 텍스트 직접 읽기.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-white">Generate:</strong>
+                    추출된 텍스트(Context)와 원본 쿼리를 조합하여 RAG 프롬프트를 동적으로 구성합니다. 이 프롬프트를 <code class="highlight">Ollama</code>가 제공하는 로컬 REST API 엔드포인트(<code class="highlight">http://localhost:11434/api/generate</code>)로 전송합니다. Ollama는 <code class="highlight">Llama 3 8B</code> 또는 <code class="highlight">Phi-3</code> 같은 경량화된 로컬 LLM을 사용하여 최종 답변을 생성합니다.
+                </li>
+            </ol>
+
+            <!-- 핵심 기능 2 스크린샷 플레이스홀더 -->
+            <img class="w-full h-auto rounded-lg my-8 shadow-lg"
+                 src="https://placehold.co/800x400/1F2937/6B7280?text=Feature+2:+Local+RAG"
+                 alt="Lumi RAG 답변 생성"
+                 onerror="this.src='https://placehold.co/800x400/1F2937/6B7280?text=Feature+2:+Local+RAG'; this.onerror=null;">
+
+            <!-- 나의 역할 및 기여 -->
+            <h3>나의 역할 및 기여</h3>
+            <ul class="list-none space-y-3 pl-0 mb-6">
+                <li class="flex items-start">
+                    <span class="text-blue-400 mr-3 mt-1.5 flex-shrink-0">✓</span>
+                    <span>VSCode 확장(Node.js)과 Python FastAPI 백엔드를 연동하는 '투-프로세스 하이브리드' 아키텍처 전체 설계 및 구현</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-400 mr-3 mt-1.5 flex-shrink-0">✓</span>
+                    <span><code class="highlight">es.exe</code> CLI와 <code class="highlight">subprocess</code>를 활용한 초고속 파일 검색(Retrieve) 모듈 개발</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-400 mr-3 mt-1.5 flex-shrink-0">✓</span>
+                    <span><code class="highlight">Ollama</code> API 연동 및 <code class="highlight">PyMuPDF</code>, <code class="highlight">python-docx</code> 등을 활용한 멀티-포맷 파일 파싱(Parse) 및 RAG 프롬프트 생성(Generate) 로직 개발</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-400 mr-3 mt-1.5 flex-shrink-0">✓</span>
+                    <span>React와 VSCode Webview UI Toolkit을 사용한 프론트엔드 UI 및 <code class="highlight">child_process.spawn</code>을 통한 백엔드 프로세스 생명주기(Lifecycle) 관리 로직 구현</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-400 mr-3 mt-1.5 flex-shrink-0">✓</span>
+                    <span>프로젝트 초기 기획 및 향후 NestJS/Spring Boot 기반의 엔터프라이즈 버전 아키텍처 구상</span>
+                </li>
+            </ul>
+
+            <!-- 결과 및 성과 -->
+            <h3>결과 및 성과</h3>
+            <ul class="list-disc list-outside space-y-3 pl-5 mb-6">
+                <li>수 테라바이트(TB)급의 로컬 디스크에서도 평균 1초 이내에 관련 파일을 즉각적으로 '검색(Retrieve)'하는 고성능 달성.</li>
+                <li>Ollama와 로컬 RAG 파이프라인을 통해 외부 API 호출 없이 100% 프라이버시를 보장하는 "내 PC와의 대화" 기능 구현.</li>
+                <li>VSCode 내에서 개발, 문서 검색, 요약 작업이 끊김 없이(seamless) 이어지는 통합 워크플로우를 구축하여 '일상 속 놓치는 부분'을 해결하고 개발 생산성을 향상시켰습니다.</li>
+            </ul>
+
+            <!-- 회고 (배운 점 및 개선점) -->
+            <h3>회고 (배운 점 및 개선점)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 배운 점 -->
+                <div class_name="bg-gray-800 p-6 rounded-lg">
+                    <h4 class="!mt-0">배운 점</h4>
+                    <ul class="list-disc list-outside space-y-3 pl-5">
+                        <li>Node.js (<code class="highlight">child_process</code>)와 Python (<code class="highlight">FastAPI/subprocess</code>)이라는 두 이기종 프로세스를 결합하고, <code class="highlight">PyInstaller</code>로 패키징하여 안정적으로 통신 및 관리하는 하이브리드 데스크톱 앱 아키텍처 설계 경험을 쌓았습니다.</li>
+                        <li>Everything의 <code class="highlight">es.exe</code>와 같이 강력한 네이티브 도구를 SDK 없이도 CLI 래핑(wrapping)만으로도 빠르고 효율적인 백엔드 서비스로 통합할 수 있음을 배웠습니다.</li>
+                        <li><code class="highlight">Ollama</code>, <code class="highlight">PyMuPDF4LLM</code> 등 다양한 로컬 AI 및 파싱 도구들을 조합하여 복잡한 RAG 파이프라인을 신속하게 구축하는 노하우를 습득했습니다.</li>
+                    </ul>
+                </div>
+                <!-- 개선점 -->
+                <div class_name="bg-gray-800 p-6 rounded-lg">
+                    <h4 class="!mt-0">개선점</h4>
+                    <ul class="list-disc list-outside space-y-3 pl-5">
+                        <li>현재는 동기식(synchronous) 파일 I/O를 사용하는데, 향후 <code class="highlight">asyncio</code>와 <code class="highlight">asyncio.to_thread</code>를 도입하여 다수의 파일 콘텐츠를 파싱(Parse)하는 단계를 병렬 처리하고 RAG 파이프라인의 전체 지연 시간(latency)을 최적화하고 싶습니다.</li>
+                        <li>사용자의 자연어 쿼리(예: "지난 주에 본 PDF")를 es.exe의 고급 검색 구문(예: <code class="highlight">ext:pdf dm:lastweek</code>)으로 변환하는 단계를 LLM을 통해 자동화하여 1차 검색(Retrieval)의 정확도를 높이고 싶습니다.</li>
+                        <li><code class="highlight">es.exe</code> 대신 Everything SDK (C DLL)와 <code class="highlight">PyEverything</code> 같은 Python 래퍼를 도입하여, 파일 시스템 변경을 실시간으로 감지하는 기능을 구현해 볼 것입니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- /end 메인 컨테이너 -->
+
+</body>
+</html>
