@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Lumi | 상세 보고서</title>
+    <title>Project Lumi | Deep Dive Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Mermaid.js (흐름도 자동 렌더링) -->
+    <!-- Mermaid.js -->
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true, theme: 'dark' });
@@ -15,157 +15,239 @@
         body { font-family: 'Inter', system-ui, sans-serif; background-color: #111827; color: #E5E7EB; }
         .highlight { font-family: 'Courier New', monospace; background-color: #1F2937; color: #FDE68A; padding: 0.125rem 0.375rem; border-radius: 0.375rem; border: 1px solid #374151; }
         .code-block { background-color: #1E1E1E; border: 1px solid #374151; border-radius: 0.5rem; padding: 1.5rem; font-family: 'Courier New', monospace; overflow-x: auto; font-size: 0.875rem; line-height: 1.6; color: #abb2bf; }
-        .keyword { color: #c678dd; } /* python def, if */
-        .func { color: #61afef; } /* function names */
-        .string { color: #98c379; } /* strings */
-        .comment { color: #7f848e; font-style: italic; } /* comments */
+        .keyword { color: #c678dd; } 
+        .func { color: #61afef; } 
+        .string { color: #98c379; } 
+        .comment { color: #7f848e; font-style: italic; } 
+        .tech-tag { display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; background-color: #374151; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: #D1D5DB; margin-right: 0.5rem; margin-bottom: 0.5rem; }
     </style>
 </head>
-<!-- 시연 영상 섹션 -->
-<section class="mb-20">
-    <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 shadow-2xl">
-        <div class="p-4 border-b border-gray-700 flex items-center">
-            <div class="flex space-x-2 mr-4">
-                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-            </div>
-            <span class="text-sm text-gray-400 font-mono">Lumi_Demo.mp4</span>
-        </div>
-        <!-- 영상 플레이어 -->
-        <video controls class="w-full" poster="assets/thumbnail_placeholder.jpg">
-            <!-- 영상을 assets 폴더에 넣고 아래 경로를 맞춰주세요 -->
-            <source src="assets/lumi_demo.mp4" type="video/mp4">
-            브라우저가 비디오 태그를 지원하지 않습니다.
-        </video>
-    </div>
-    <p class="text-center text-gray-500 text-sm mt-3">
-        ▲ 실제 작동 시연: 자연어 질문 → Python 파싱 → Everything 검색 결과
-    </p>
-</section>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
 
     <!-- 네비게이션 -->
     <nav class="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-gray-800">
-        <div class="container mx-auto max-w-4xl px-4 h-16 flex items-center justify-between">
-            <a href="index.html" class="text-gray-400 hover:text-white font-medium flex items-center">
-                ← Back to Home
+        <div class="container mx-auto max-w-5xl px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-gray-400 hover:text-white font-medium flex items-center transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Home
             </a>
-            <span class="text-xl font-bold text-white">Project Lumi</span>
+            <span class="text-xl font-bold text-white tracking-tight">Project Lumi</span>
         </div>
     </nav>
 
-    <div class="container mx-auto max-w-4xl px-4 py-12">
+    <div class="container mx-auto max-w-5xl px-4 py-12">
 
         <!-- 헤더 섹션 -->
-        <header class="mb-12 text-center">
-            <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-900/30 rounded-full border border-blue-800">
-                Web-Based Local Agent
-            </span>
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Lumi: 자연어 기반 로컬 파일 에이전트</h1>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                "E드라이브 민혁 폴더에서 가장 큰 파일 찾아줘"<br>
-                Python 규칙 엔진과 LLM을 결합하여 환각 없이 정확하게 내 PC를 제어합니다.
+        <header class="mb-16 text-center">
+            <div class="flex justify-center flex-wrap mb-6">
+                <span class="tech-tag border border-blue-500/30 text-blue-300">Local RAG</span>
+                <span class="tech-tag border border-green-500/30 text-green-300">Windows Internals</span>
+                <span class="tech-tag border border-purple-500/30 text-purple-300">Hybrid Architecture</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                Lumi: OS 보안 경계를 넘는<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">지능형 로컬 파일 에이전트</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                "Python 규칙 엔진과 LLM(Ollama)의 하이브리드 파싱으로 <strong>환각 현상을 제거</strong>하고,<br>
+                <strong>Windows Session 0 격리 문제</strong>를 <code>ctypes</code> 직접 호출 아키텍처로 극복했습니다."
             </p>
         </header>
 
-        <!-- 핵심 기술 1: 하이브리드 인텐트 파싱 -->
+        <!-- 1. 아키텍처 진화 (Deep Research 결과 반영) -->
         <section class="mb-20">
-            <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
-                <span class="bg-blue-500 w-2 h-8 mr-3 rounded-sm"></span>
-                Key Tech: 하이브리드 인텐트 파싱
-            </h2>
-            <p class="mb-8 text-gray-300">
-                소형 LLM(Gemma:2b)의 한계인 잦은 환각(Hallucination)을 극복하기 위해, 
-                <strong>Python의 규칙 기반 분석</strong>을 1차 필터로 사용하는 하이브리드 로직을 설계했습니다.
-            </p>
+            <div class="flex items-center mb-8">
+                <span class="bg-blue-600 w-1.5 h-8 mr-4 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">Architecture Evolution: From CLI to SDK</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Before -->
+                <div class="bg-gray-800/30 border border-red-900/30 rounded-xl p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-red-900/50 text-red-200 text-xs px-3 py-1 rounded-bl-lg font-bold">Initial Attempt (Failed)</div>
+                    <h3 class="text-lg font-bold text-white mb-4">Subprocess Approach</h3>
+                    <div class="mermaid text-sm">
+                        graph TD
+                        A[Lumi (User Session)] -- subprocess --> B[es.exe (CLI)]
+                        B -. IPC Fail .-> C[Everything Service (Session 0)]
+                        style B fill:#3f1a1a,stroke:#7f1d1d
+                        style C fill:#3f1a1a,stroke:#7f1d1d
+                    </div>
+                    <ul class="mt-4 space-y-2 text-sm text-gray-400">
+                        <li class="flex items-start"><span class="text-red-500 mr-2">✗</span>Windows Session 0 격리로 인해 IPC 통신 차단</li>
+                        <li class="flex items-start"><span class="text-red-500 mr-2">✗</span>사용자 권한 vs SYSTEM 권한 충돌 (Access Denied)</li>
+                        <li class="flex items-start"><span class="text-red-500 mr-2">✗</span>"서비스 실행 중 아님" 허위 오류 발생</li>
+                    </ul>
+                </div>
 
-            <!-- 1. 로직 흐름도 (Mermaid) -->
-            <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8 text-center">
-                <h3 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wider">Logic Flowchart</h3>
-                <div class="mermaid flex justify-center">
-                    graph TD
-                    A["사용자 질문 입력"] --> B{"Python 규칙 분석<br/>(Regex & Keywords)"}
-                    B -- "명확한 의도<br/>(빈폴더, 용량, 최근)" --> C["Python이 즉시<br/>쿼리 생성 & 정렬"]
-                    B -- "복잡한 자연어" --> D["Local LLM<br/>(Gemma:2b)"]
-                    D --> E["자연어를 Everything<br/>문법으로 번역"]
-                    C --> F["Everything SDK<br/>(DLL) 실행"]
-                    E --> F
-                    F --> G["결과 반환"]
-                    
-                    style B fill:#1e3a8a,stroke:#3b82f6,color:#fff
-                    style C fill:#064e3b,stroke:#10b981,color:#fff
-                    style D fill:#7c2d12,stroke:#f97316,color:#fff
+                <!-- After -->
+                <div class="bg-gray-800/30 border border-green-900/30 rounded-xl p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-green-900/50 text-green-200 text-xs px-3 py-1 rounded-bl-lg font-bold">Final Solution</div>
+                    <h3 class="text-lg font-bold text-white mb-4">In-Process SDK Approach</h3>
+                    <div class="mermaid text-sm">
+                        graph TD
+                        A[Lumi Backend] -- ctypes load --> B[Everything64.dll]
+                        B -- Direct API --> C[Everything Engine]
+                        style A fill:#064e3b,stroke:#059669
+                        style B fill:#064e3b,stroke:#059669
+                    </div>
+                    <ul class="mt-4 space-y-2 text-sm text-gray-400">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span><strong>ctypes</strong>로 DLL 직접 로드하여 보안 경계 우회</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>외부 프로세스 의존성 제거 (es.exe 불필요)</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span><strong>PyInstaller</strong>로 DLL 번들링하여 이식성 확보</li>
+                    </ul>
                 </div>
             </div>
+            
+            <div class="bg-blue-900/10 border border-blue-800 rounded-lg p-4">
+                <p class="text-sm text-blue-200">
+                    <strong>💡 AI Deep Research Insight:</strong> 
+                    단순한 코드 오류가 아니라 <strong>Windows Mandatory Integrity Control(MIC)</strong> 정책에 의한 차단임을 AI 분석을 통해 파악했습니다. 이를 통해 <code>subprocess</code> 방식을 포기하고 <code>ctypes</code> 기반의 DLL 직접 호출 방식으로 아키텍처를 전면 수정했습니다.
+                </p>
+            </div>
+        </section>
 
-            <!-- 2. 코드 스니펫 -->
-            <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
-                <h3 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wider">Implementation (Python)</h3>
-                <div class="code-block">
-<span class="comment"># [Hybrid Intent Parsing] main.py 핵심 로직</span>
-<span class="keyword">async def</span> <span class="func">agent_action</span>(user_q):
-    <span class="comment"># 1. Python Regex로 경로와 의도를 먼저 추출하여 환각 방지</span>
-    path_match = re.search(<span class="string">r'([a-zA-Z]:\\[^\s"]+|[a-zA-Z]:)'</span>, user_q)
-    <span class="keyword">if</span> path_match:
-        path = path_match.group(1).replace(<span class="string">'"'</span>, <span class="string">''</span>)
+        <!-- 2. 기술적 난관 극복 (Troubleshooting Logs) -->
+        <section class="mb-20">
+            <div class="flex items-center mb-8">
+                <span class="bg-purple-600 w-1.5 h-8 mr-4 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">Technical Challenges & Solutions</h2>
+            </div>
 
-    <span class="comment"># 2. 키워드에 따른 정렬 모드 강제 적용 (Rule-Based)</span>
-    <span class="keyword">if</span> <span class="string">"빈 폴더"</span> <span class="keyword">in</span> user_q:
-        query = <span class="string">f'"{path}" folder:childcount:0'</span>
-    <span class="keyword">elif</span> <span class="string">"용량"</span> <span class="keyword">in</span> user_q <span class="keyword">or</span> <span class="string">"큰 파일"</span> <span class="keyword">in</span> user_q:
-        query = <span class="string">f'"{path}" file:'</span>
-        sort_mode = <span class="string">6</span>  <span class="comment"># Size Descending (Python 강제 정렬)</span>
-    
-    <span class="comment"># 3. 규칙에 매칭되지 않으면 LLM 호출 (Fallback)</span>
-    <span class="keyword">else</span>:
-        query = <span class="keyword">await</span> ollama.ask(user_q)
+            <div class="space-y-6">
+                <!-- Case 1: DLL Dependency Hell -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="p-6 border-b border-gray-700 bg-gray-800/50">
+                        <h3 class="text-lg font-semibold text-white flex items-center">
+                            <span class="bg-red-500/20 text-red-300 text-xs px-2 py-1 rounded mr-3">Packaging</span>
+                            PyInstaller DLL Dependency Hell
+                        </h3>
+                    </div>
+                    <div class="p-6 grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-400 uppercase mb-2">Problem</h4>
+                            <p class="text-gray-300 text-sm mb-4">
+                                개발 환경에선 작동하던 <code>lumi_backend.exe</code>가 배포 후 <code>RuntimeError: Everything DLL을 로드할 수 없습니다</code> 오류와 함께 충돌.
+                                <code>Everything64.dll</code>만 번들링했으나, 내부적으로 의존하는 C++ 런타임 라이브러리가 누락됨.
+                            </p>
+                            <div class="bg-black/30 p-3 rounded text-xs font-mono text-red-400">
+                                ImportError: DLL load failed: The specified module could not be found.
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-400 uppercase mb-2">Solution</h4>
+                            <p class="text-gray-300 text-sm mb-4">
+                                시스템 경로(<code>System32</code>)에 있는 <code>VCRUNTIME140.dll</code>과 <code>MSVCP140.dll</code>을 찾아 PyInstaller 바이너리에 명시적으로 포함시키는 <strong>Bundling Strategy</strong> 수립.
+                            </p>
+                            <div class="code-block text-xs py-2">
+<span class="comment"># lumi_backend.spec (Final)</span>
+binaries=[
+    ('bin/Everything64.dll', '.'),
+    ('bin/VCRUNTIME140.dll', '.'), <span class="comment"># Critical Fix</span>
+    ('bin/MSVCP140.dll', '.'),
+],</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2: Frontend Data Mismatch -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="p-6 border-b border-gray-700 bg-gray-800/50">
+                        <h3 class="text-lg font-semibold text-white flex items-center">
+                            <span class="bg-yellow-500/20 text-yellow-300 text-xs px-2 py-1 rounded mr-3">Integration</span>
+                            JSON Structure Mismatch (n.map is not a function)
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 text-sm mb-4">
+                            백엔드가 <code>{"results": {"results": [...]}}</code> 형태의 중첩 객체를 반환하는 반면, 프론트엔드는 배열을 기대하여 <code>TypeError: n.map is not a function</code> 발생.
+                            <strong>Defensive Parsing</strong> 로직을 도입하여 해결.
+                        </p>
+                        <div class="code-block">
+<span class="comment">// Frontend Fix (React)</span>
+<span class="keyword">const</span> raw = data.results;
+<span class="keyword">const</span> list = Array.isArray(raw) 
+    ? raw 
+    : Array.isArray(raw?.results) ? raw.results : []; <span class="comment">// 이중 구조 및 null 안전 처리</span>
+
+setResults(list);</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 핵심 기술 2: Everything & RAG -->
+        <!-- 3. 핵심 기능: 하이브리드 파싱 (Hybrid Parsing) -->
         <section class="mb-20">
-            <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
-                <span class="bg-green-500 w-2 h-8 mr-3 rounded-sm"></span>
-                Tech Stack & Features
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
-                    <h3 class="text-green-400 font-bold mb-2">초고속 파일 인덱싱</h3>
-                    <p class="text-gray-300 text-sm">
-                        Everything SDK(DLL)를 <code class="highlight">ctypes</code>로 직접 호출하여 CLI 방식보다 10배 빠른 검색 속도를 구현했습니다. 실시간으로 파일 시스템 변경사항을 반영합니다.
-                    </p>
-                </div>
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
-                    <h3 class="text-green-400 font-bold mb-2">Local RAG (Privacy)</h3>
-                    <p class="text-gray-300 text-sm">
-                        외부 API 전송 없이 로컬에서 <code class="highlight">PyMuPDF</code>로 텍스트를 추출하고 Ollama에 주입합니다. 보안이 중요한 개인 문서를 안전하게 처리합니다.
-                    </p>
+            <div class="flex items-center mb-8">
+                <span class="bg-blue-600 w-1.5 h-8 mr-4 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">Core Logic: Hybrid Intent Parsing</h2>
+            </div>
+            
+            <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-8">
+                <p class="text-gray-300 mb-6">
+                    소형 LLM(Gemma:2b)의 문법 창조(Hallucination) 문제를 해결하기 위해, 
+                    <strong>Python 규칙 엔진</strong>이 1차로 의도를 분석하고 복잡한 자연어만 LLM에게 위임하는 하이브리드 로직을 설계했습니다.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <!-- Mermaid Diagram -->
+                    <div>
+                        <div class="mermaid">
+                            graph TD
+                            A["사용자 질문 입력"] --> B{"Python Regex 분석"}
+                            B -- "패턴 매칭 (빈폴더, 용량)" --> C["Python이 정렬/쿼리 생성<br>(Hallucination 0%)"]
+                            B -- "복잡한 자연어" --> D["Local LLM (Gemma:2b)"]
+                            D --> E["쿼리 번역"]
+                            C --> F["Everything DLL 실행"]
+                            E --> F
+                            style C fill:#064e3b,stroke:#059669
+                            style D fill:#7c2d12,stroke:#ea580c
+                        </div>
+                    </div>
+                    <!-- Code Snippet -->
+                    <div class="code-block">
+<span class="comment"># services/search_service.py</span>
+<span class="keyword">if</span> <span class="string">"빈 폴더"</span> <span class="keyword">in</span> user_q:
+    <span class="comment"># LLM을 거치지 않고 Python이 직접 처리 (정확도 100%)</span>
+    query = <span class="string">f'"{path}" folder:childcount:0'</span>
+<span class="keyword">elif</span> <span class="string">"용량"</span> <span class="keyword">in</span> user_q:
+    query = <span class="string">f'"{path}" file:'</span>
+    sort_mode = <span class="string">6</span>  <span class="comment"># Size Descending 강제 적용</span>
+<span class="keyword">else</span>:
+    <span class="comment"># 규칙에 없으면 LLM에게 번역 요청 (Fallback)</span>
+    query = <span class="keyword">await</span> ollama.ask(user_q)</div>
                 </div>
             </div>
         </section>
 
-        <!-- 트러블 슈팅 -->
-        <section class="mb-20">
-            <h2 class="text-2xl font-bold text-white mb-6">🔥 Trouble Shooting</h2>
-            <div class="bg-gray-800/30 border-l-4 border-orange-500 p-6 rounded-r-lg">
-                <h3 class="text-lg font-bold text-white mb-2">문제: LLM의 문법 창조 (Hallucination)</h3>
-                <p class="text-gray-300 mb-4">
-                    사용자가 "가장 큰 파일 찾아줘"라고 했을 때, LLM이 존재하지 않는 <code class="highlight">file:size:max</code> 같은 명령어를 만들어내거나, 단순한 폴더 검색에도 <code class="highlight">childcount:0</code>(빈 폴더) 옵션을 붙이는 과적합 현상이 발생했습니다.
-                </p>
-                <h3 class="text-lg font-bold text-white mb-2">해결: 역할 분리</h3>
-                <p class="text-gray-300">
-                    "의도 파악"과 "정렬"은 정확도가 100%여야 하므로 Python 코드가 담당하게 변경했습니다. LLM은 오직 복잡한 자연어를 단순 검색어로 번역하는 역할로 축소하여 안정성을 확보했습니다.
-                </p>
+        <!-- 4. 데모 및 성과 -->
+        <section>
+            <div class="flex items-center mb-8">
+                <span class="bg-gray-500 w-1.5 h-8 mr-4 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">Final Outcome</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
+                    <div class="text-3xl font-bold text-white mb-2">1s <span class="text-sm font-normal text-gray-400">lat</span></div>
+                    <p class="text-gray-400 text-sm">Everything SDK 직접 호출로 검색 지연 시간 최소화</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
+                    <div class="text-3xl font-bold text-white mb-2">0% <span class="text-sm font-normal text-gray-400">Leak</span></div>
+                    <p class="text-gray-400 text-sm">Local DLL & Gemma 모델 사용으로 데이터 유출 원천 차단</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
+                    <div class="text-3xl font-bold text-white mb-2">Portable</div>
+                    <p class="text-gray-400 text-sm">PyInstaller + DLL Bundling으로 설치 없이 실행 가능</p>
+                </div>
             </div>
         </section>
 
     </div>
 
-    <!-- 푸터 -->
-    <footer class="bg-gray-950 border-t border-gray-800 py-12 text-center">
-        <p class="text-gray-500 text-sm">&copy; 2025 Kim Min-hyuk. Project Lumi.</p>
+    <footer class="bg-gray-950 border-t border-gray-800 py-12 mt-20 text-center">
+        <p class="text-gray-600 text-sm mb-2">Powered by Python, FastAPI, React, and Everything SDK</p>
+        <p class="text-gray-500 text-xs">&copy; 2025 Kim Min-hyuk. Project Lumi.</p>
     </footer>
 
 </body>
