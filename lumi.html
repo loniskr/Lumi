@@ -54,6 +54,45 @@
             </p>
         </header>
 
+        <!-- 0. 시연 영상 (Demo Video) - 추가됨 -->
+        <section class="mb-20">
+            <div class="flex items-center mb-8">
+                <span class="bg-red-500 w-1.5 h-8 mr-4 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">Live Demo</h2>
+            </div>
+            
+            <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 shadow-2xl relative">
+                <!-- 윈도우 UI 데코레이션 -->
+                <div class="bg-gray-900 px-4 py-3 border-b border-gray-700 flex items-center">
+                    <div class="flex space-x-2 mr-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="text-xs text-gray-500 font-mono flex-1 text-center">lumi_demo.mp4</div>
+                </div>
+
+                <!-- 비디오 플레이어 -->
+                <!-- playsinline: 모바일에서 전체화면 방지, preload: 메타데이터 미리 로드 -->
+                <video controls class="w-full bg-black aspect-video" preload="metadata" playsinline>
+                    <!-- 중요: assets 폴더에 파일명이 정확히 일치하는지 확인하세요 (대소문자 구분) -->
+                    <source src="assets/lumi_demo.mp4" type="video/mp4">
+                    
+                    <!-- 영상 로드 실패 시 표시될 내용 -->
+                    <div class="p-10 text-center h-full flex flex-col justify-center items-center bg-gray-800">
+                        <p class="text-gray-400 mb-4">브라우저가 비디오 태그를 지원하지 않거나 영상을 찾을 수 없습니다.</p>
+                        <a href="assets/lumi_demo.mp4" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors" target="_blank" download>
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            영상 파일 직접 다운로드
+                        </a>
+                    </div>
+                </video>
+            </div>
+            <p class="text-center text-gray-500 text-sm mt-4">
+                * 영상이 재생되지 않는 경우, <code>assets</code> 폴더에 <code>lumi_demo.mp4</code> 파일이 있는지 확인해주세요. (H.264 코덱 권장)
+            </p>
+        </section>
+
         <!-- 1. 아키텍처 진화 (Deep Research 결과 반영) -->
         <section class="mb-20">
             <div class="flex items-center mb-8">
