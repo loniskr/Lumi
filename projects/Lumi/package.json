@@ -1,0 +1,41 @@
+{
+  "name": "lumi",
+  "displayName": "Lumi",
+  "description": "A VSCode extension for searching files and interacting with AI.",
+  "version": "0.0.1",
+  "publisher": "kimminhyeok",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loniskr/lumi.git"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:lumi.start"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "lumi.start",
+        "title": "Lumi: 시작"
+      }
+    ]
+  },
+  "scripts": {
+    "test": "vscode-test",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "build": "echo 'Use npm run compile for tsc, or run build in webview-ui for vite'"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0",
+    "vsce": "^2.15.0"
+  }
+}

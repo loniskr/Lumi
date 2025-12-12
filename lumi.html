@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Lumi | 상세 보고서</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Mermaid.js (흐름도 자동 렌더링) -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; background-color: #111827; color: #E5E7EB; }
+        .highlight { font-family: 'Courier New', monospace; background-color: #1F2937; color: #FDE68A; padding: 0.125rem 0.375rem; border-radius: 0.375rem; border: 1px solid #374151; }
+        .code-block { background-color: #1E1E1E; border: 1px solid #374151; border-radius: 0.5rem; padding: 1.5rem; font-family: 'Courier New', monospace; overflow-x: auto; font-size: 0.875rem; line-height: 1.6; color: #abb2bf; }
+        .keyword { color: #c678dd; } /* python def, if */
+        .func { color: #61afef; } /* function names */
+        .string { color: #98c379; } /* strings */
+        .comment { color: #7f848e; font-style: italic; } /* comments */
+    </style>
+</head>
+<!-- 시연 영상 섹션 -->
+<section class="mb-20">
+    <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 shadow-2xl">
+        <div class="p-4 border-b border-gray-700 flex items-center">
+            <div class="flex space-x-2 mr-4">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <span class="text-sm text-gray-400 font-mono">Lumi_Demo.mp4</span>
+        </div>
+        <!-- 영상 플레이어 -->
+        <video controls class="w-full" poster="assets/thumbnail_placeholder.jpg">
+            <!-- 영상을 assets 폴더에 넣고 아래 경로를 맞춰주세요 -->
+            <source src="assets/lumi_demo.mp4" type="video/mp4">
+            브라우저가 비디오 태그를 지원하지 않습니다.
+        </video>
+    </div>
+    <p class="text-center text-gray-500 text-sm mt-3">
+        ▲ 실제 작동 시연: 자연어 질문 → Python 파싱 → Everything 검색 결과
+    </p>
+</section>
+<body class="antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- 네비게이션 -->
+    <nav class="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto max-w-4xl px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-gray-400 hover:text-white font-medium flex items-center">
+                ← Back to Home
+            </a>
+            <span class="text-xl font-bold text-white">Project Lumi</span>
+        </div>
+    </nav>
+
+    <div class="container mx-auto max-w-4xl px-4 py-12">
+
+        <!-- 헤더 섹션 -->
+        <header class="mb-12 text-center">
+            <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-900/30 rounded-full border border-blue-800">
+                Web-Based Local Agent
+            </span>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Lumi: 자연어 기반 로컬 파일 에이전트</h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                "E드라이브 민혁 폴더에서 가장 큰 파일 찾아줘"<br>
+                Python 규칙 엔진과 LLM을 결합하여 환각 없이 정확하게 내 PC를 제어합니다.
+            </p>
+        </header>
+
+        <!-- 핵심 기술 1: 하이브리드 인텐트 파싱 -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                <span class="bg-blue-500 w-2 h-8 mr-3 rounded-sm"></span>
+                Key Tech: 하이브리드 인텐트 파싱
+            </h2>
+            <p class="mb-8 text-gray-300">
+                소형 LLM(Gemma:2b)의 한계인 잦은 환각(Hallucination)을 극복하기 위해, 
+                <strong>Python의 규칙 기반 분석</strong>을 1차 필터로 사용하는 하이브리드 로직을 설계했습니다.
+            </p>
+
+            <!-- 1. 로직 흐름도 (Mermaid) -->
+            <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8 text-center">
+                <h3 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wider">Logic Flowchart</h3>
+                <div class="mermaid flex justify-center">
+                    graph TD
+                    A["사용자 질문 입력"] --> B{"Python 규칙 분석<br/>(Regex & Keywords)"}
+                    B -- "명확한 의도<br/>(빈폴더, 용량, 최근)" --> C["Python이 즉시<br/>쿼리 생성 & 정렬"]
+                    B -- "복잡한 자연어" --> D["Local LLM<br/>(Gemma:2b)"]
+                    D --> E["자연어를 Everything<br/>문법으로 번역"]
+                    C --> F["Everything SDK<br/>(DLL) 실행"]
+                    E --> F
+                    F --> G["결과 반환"]
+                    
+                    style B fill:#1e3a8a,stroke:#3b82f6,color:#fff
+                    style C fill:#064e3b,stroke:#10b981,color:#fff
+                    style D fill:#7c2d12,stroke:#f97316,color:#fff
+                </div>
+            </div>
+
+            <!-- 2. 코드 스니펫 -->
+            <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                <h3 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wider">Implementation (Python)</h3>
+                <div class="code-block">
+<span class="comment"># [Hybrid Intent Parsing] main.py 핵심 로직</span>
+<span class="keyword">async def</span> <span class="func">agent_action</span>(user_q):
+    <span class="comment"># 1. Python Regex로 경로와 의도를 먼저 추출하여 환각 방지</span>
+    path_match = re.search(<span class="string">r'([a-zA-Z]:\\[^\s"]+|[a-zA-Z]:)'</span>, user_q)
+    <span class="keyword">if</span> path_match:
+        path = path_match.group(1).replace(<span class="string">'"'</span>, <span class="string">''</span>)
+
+    <span class="comment"># 2. 키워드에 따른 정렬 모드 강제 적용 (Rule-Based)</span>
+    <span class="keyword">if</span> <span class="string">"빈 폴더"</span> <span class="keyword">in</span> user_q:
+        query = <span class="string">f'"{path}" folder:childcount:0'</span>
+    <span class="keyword">elif</span> <span class="string">"용량"</span> <span class="keyword">in</span> user_q <span class="keyword">or</span> <span class="string">"큰 파일"</span> <span class="keyword">in</span> user_q:
+        query = <span class="string">f'"{path}" file:'</span>
+        sort_mode = <span class="string">6</span>  <span class="comment"># Size Descending (Python 강제 정렬)</span>
+    
+    <span class="comment"># 3. 규칙에 매칭되지 않으면 LLM 호출 (Fallback)</span>
+    <span class="keyword">else</span>:
+        query = <span class="keyword">await</span> ollama.ask(user_q)
+                </div>
+            </div>
+        </section>
+
+        <!-- 핵심 기술 2: Everything & RAG -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                <span class="bg-green-500 w-2 h-8 mr-3 rounded-sm"></span>
+                Tech Stack & Features
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="text-green-400 font-bold mb-2">초고속 파일 인덱싱</h3>
+                    <p class="text-gray-300 text-sm">
+                        Everything SDK(DLL)를 <code class="highlight">ctypes</code>로 직접 호출하여 CLI 방식보다 10배 빠른 검색 속도를 구현했습니다. 실시간으로 파일 시스템 변경사항을 반영합니다.
+                    </p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="text-green-400 font-bold mb-2">Local RAG (Privacy)</h3>
+                    <p class="text-gray-300 text-sm">
+                        외부 API 전송 없이 로컬에서 <code class="highlight">PyMuPDF</code>로 텍스트를 추출하고 Ollama에 주입합니다. 보안이 중요한 개인 문서를 안전하게 처리합니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 트러블 슈팅 -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold text-white mb-6">🔥 Trouble Shooting</h2>
+            <div class="bg-gray-800/30 border-l-4 border-orange-500 p-6 rounded-r-lg">
+                <h3 class="text-lg font-bold text-white mb-2">문제: LLM의 문법 창조 (Hallucination)</h3>
+                <p class="text-gray-300 mb-4">
+                    사용자가 "가장 큰 파일 찾아줘"라고 했을 때, LLM이 존재하지 않는 <code class="highlight">file:size:max</code> 같은 명령어를 만들어내거나, 단순한 폴더 검색에도 <code class="highlight">childcount:0</code>(빈 폴더) 옵션을 붙이는 과적합 현상이 발생했습니다.
+                </p>
+                <h3 class="text-lg font-bold text-white mb-2">해결: 역할 분리</h3>
+                <p class="text-gray-300">
+                    "의도 파악"과 "정렬"은 정확도가 100%여야 하므로 Python 코드가 담당하게 변경했습니다. LLM은 오직 복잡한 자연어를 단순 검색어로 번역하는 역할로 축소하여 안정성을 확보했습니다.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-12 text-center">
+        <p class="text-gray-500 text-sm">&copy; 2025 Kim Min-hyuk. Project Lumi.</p>
+    </footer>
+
+</body>
+</html>

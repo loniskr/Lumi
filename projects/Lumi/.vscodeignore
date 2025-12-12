@@ -1,0 +1,35 @@
+# 컴파일된 소스 코드 무시
+src/
+
+# 의존성 폴더 무시
+node_modules/
+/webview-ui/node_modules/
+
+# Python 가상환경 및 캐시
+.venv/
+__pycache__/
+
+# PyInstaller 빌드 아티팩트
+build/
+dist/
+*.spec
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# 로그 파일
+*.log
+
+# --- [가장 중요] 패키징 예외 규칙 ---
+# 위 규칙에도 불구하고, 아래 파일들은 .vsix에 반드시 포함시켜야 함
+
+# 1. 메인 확장 코드 (tsc 출력물)
+!out/extension.js
+!out/extension.js.map
+
+# 2. 백엔드 실행 파일
+!bin/lumi_backend.exe
+
+# 3. React UI 빌드 결과물
+!webview-ui/dist/**
