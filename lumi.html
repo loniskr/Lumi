@@ -76,6 +76,8 @@
                 <!-- playsinline: 모바일에서 전체화면 방지, preload: 메타데이터 미리 로드 -->
                 <video controls class="w-full bg-black aspect-video" preload="metadata" playsinline>
                     <!-- 중요: assets 폴더에 파일명이 정확히 일치하는지 확인하세요 (대소문자 구분) -->
+                    <!-- 코덱 파라미터 추가 (avc1.4d401e는 일반적인 H.264 프로파일) -->
+                    <source src="assets/lumi_demo.mp4" type='video/mp4; codecs="avc1.4d401e, mp4a.40.2"'>
                     <source src="assets/lumi_demo.mp4" type="video/mp4">
                     
                     <!-- 영상 로드 실패 시 표시될 내용 -->
